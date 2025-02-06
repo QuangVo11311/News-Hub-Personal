@@ -1,5 +1,7 @@
 from datetime import datetime
-from app import db
+
+from app import db, create_app
+
 
 # Bảng User
 class User(db.Model):
@@ -16,6 +18,7 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
 
+
 # Bảng NewsPreference (Sở thích tin tức của user)
 class NewsPreference(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -25,6 +28,7 @@ class NewsPreference(db.Model):
 
     def __repr__(self):
         return f"NewsPreference('{self.user_id}', '{self.category}')"
+
 
 # Bảng SavedArticle (Bài báo đã lưu của user)
 class SavedArticle(db.Model):
@@ -36,3 +40,9 @@ class SavedArticle(db.Model):
 
     def __repr__(self):
         return f"SavedArticle('{self.user_id}', '{self.title}')"
+
+
+if __name__ == '__main__':
+    app = create_app()
+    with app.app_context():
+        db.create_all()
