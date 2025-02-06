@@ -9,7 +9,7 @@ class Config:
     DB_NAME = os.getenv('DB_NAME', 'news_personal_db')  # Tên database của bạn
 
     # Kết nối với MySQL
-    SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+    SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?charset=utf8mb4"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Cấu hình JWT cho xác thực API
